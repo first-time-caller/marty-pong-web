@@ -1,0 +1,252 @@
+:root {
+  --bg: #0f0f12;
+  --card: #17171c;
+  --accent: #3ad17a;
+  --accent-dark: #1b8f4c;
+  --text: #f7f7f7;
+  --muted: #b7bcc8;
+  --danger: #ff5f57;
+  --warning: #ffb347;
+  --tile: #24242b;
+  --tile-hover: #2d2d38;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #1b1b22 0%, #0e0e10 55%, #09090b 100%);
+  color: var(--text);
+}
+
+.app {
+  max-width: 980px;
+  margin: 24px auto 48px;
+  padding: 0 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.streak {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  background: #1a1a22;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.flame { font-size: 22px; }
+
+.progress {
+  margin: 12px 0 24px;
+}
+
+.progress-bar {
+  background: #22222a;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #2cd173, #5cff9d);
+  width: 0%;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.card {
+  background: var(--card);
+  padding: 18px 20px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.25);
+}
+
+.phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.phase-pill {
+  background: #1f1f28;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.idiom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.idiom-native {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.idiom-country {
+  font-size: 28px;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.choice {
+  background: var(--tile);
+  border: 1px solid transparent;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice:hover { background: var(--tile-hover); }
+
+.choice.correct { border-color: var(--accent); }
+
+.choice.wrong { border-color: var(--danger); }
+
+.feedback {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.hint-btn {
+  background: transparent;
+  color: var(--warning);
+  border: 1px dashed var(--warning);
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.literal-hint {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #1c1c25;
+  color: var(--warning);
+}
+
+.hidden { display: none; }
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.bank, .tray {
+  background: #1a1a22;
+  padding: 12px;
+  border-radius: 12px;
+  min-height: 140px;
+}
+
+.tile-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  min-height: 56px;
+  padding: 6px;
+  border: 1px dashed #333;
+  border-radius: 10px;
+}
+
+.tile {
+  background: #2a2a36;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: grab;
+  user-select: none;
+  border: 1px solid #333;
+}
+
+.tile.dragging {
+  opacity: 0.5;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.primary, .secondary {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--accent);
+  color: #0c1b12;
+  font-weight: 600;
+}
+
+.secondary {
+  background: #2a2a36;
+  color: var(--text);
+}
+
+.result {
+  border: 1px solid #2c2c38;
+}
+
+.note {
+  color: var(--muted);
+}
+
+.share-output {
+  background: #121218;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 12px;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 760px) {
+  .board { grid-template-columns: 1fr; }
+  .idiom { flex-direction: column; align-items: flex-start; }
+}

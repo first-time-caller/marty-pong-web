@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Idiomdle</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="title">
+        <h1>Idiomdle</h1>
+        <p class="subtitle">Wordle x Duolingo — Idiom Edition</p>
+      </div>
+      <div class="streak">
+        <span class="flame">🔥</span>
+        <span id="streakValue">0</span>
+      </div>
+    </header>
+
+    <section class="progress">
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div class="progress-labels">
+        <span>Phase A</span>
+        <span>Phase B</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="phase-header">
+        <span class="phase-pill">Phase A — Recognition</span>
+      </div>
+      <div class="idiom">
+        <div class="idiom-native" id="nativeIdiom">Loading…</div>
+        <div class="idiom-country" id="countryFlag"></div>
+      </div>
+      <div class="choices" id="languageChoices"></div>
+      <div id="phaseAFeedback" class="feedback"></div>
+    </section>
+
+    <section class="card">
+      <div class="phase-header">
+        <span class="phase-pill">Phase B — Construction</span>
+        <button id="hintButton" class="hint-btn">Reveal Literal Hint (once)</button>
+      </div>
+      <div id="literalHint" class="literal-hint hidden"></div>
+
+      <div class="board">
+        <div class="bank" id="wordBank">
+          <h3>Word Bank</h3>
+          <div class="tile-area" id="bankTiles"></div>
+        </div>
+        <div class="tray" id="sentenceTray">
+          <h3>Sentence Tray</h3>
+          <div class="tile-area" id="trayTiles" data-dropzone="true"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="checkButton" class="primary">Check Answer</button>
+        <button id="resetTray" class="secondary">Reset Tray</button>
+      </div>
+
+      <div id="phaseBFeedback" class="feedback"></div>
+    </section>
+
+    <section class="card result hidden" id="resultCard">
+      <h3>Round Result</h3>
+      <p id="resultText"></p>
+      <p class="note" id="culturalNote"></p>
+      <div class="result-actions">
+        <button id="nextRound" class="primary">Next Idiom</button>
+        <button id="shareButton" class="secondary">Share</button>
+      </div>
+      <pre id="shareOutput" class="share-output hidden"></pre>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
